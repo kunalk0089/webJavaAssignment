@@ -1,0 +1,13 @@
+package com.weather.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.weather.repo.ForecastRepo;
+
+@Service
+public class ForecastService {
+	@Autowired
+	ForecastRepo fr;
+
+}

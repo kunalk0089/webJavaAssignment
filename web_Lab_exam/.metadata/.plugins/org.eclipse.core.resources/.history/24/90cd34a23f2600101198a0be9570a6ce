@@ -1,0 +1,9 @@
+package com.weather.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.weather.entity.Forecast;
+
+public interface ForecastRepo extends JpaRepository<Forecast, Integer> {
+
+}

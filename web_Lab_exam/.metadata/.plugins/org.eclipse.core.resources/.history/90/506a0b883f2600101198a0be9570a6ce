@@ -1,0 +1,36 @@
+package com.weather.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.weather.entity.Forecast;
+import com.weather.repo.ForecastRepo;
+
+@Service
+public class ForecastService {
+	@Autowired
+	ForecastRepo fr;
+	public List<Forecast> showAll()
+	{
+		return fr.findAll();
+	}
+	public boolean saveForecast(Forecast forecast)
+	{
+		return false;
+	}
+	public Forecast getOne(Integer id)
+	{
+	  Optional<Forecast>forcast=fr.findById(id);
+	  if(forcast.isEmpty())
+	  {
+		  throw new ResourceNotFoundException("Forecast With Given Id Not Found!!");
+	  }
+	  Forecast f=forcast.get();
+	  return f;
+	   
+	}
+
+}

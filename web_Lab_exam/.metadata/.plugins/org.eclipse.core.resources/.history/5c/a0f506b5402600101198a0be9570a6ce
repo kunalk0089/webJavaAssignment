@@ -1,0 +1,37 @@
+package com.weather.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.weather.entity.Forecast;
+import com.weather.service.ForecastService;
+
+@RestController
+public class ForecastController {
+	@Autowired
+	ForecastService fs;
+	@GetMapping("/getall")
+	public ResponseEntity<?>getAll()
+	{
+		List<Forecast> forecasts=fs.showAll();
+		return new ResponseEntity<>(forecasts, HttpStatus.OK);
+		
+	}
+	@PostMapping("/save")
+	public ResponseEntity<?>save(@RequestBody Forecast forcast)
+	{
+		if(fs.saveForecast(forcast))
+		{
+			return new ResponseEntity<>
+		}
+	}
+	
+
+}
